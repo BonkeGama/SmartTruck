@@ -1,0 +1,94 @@
+﻿@model SmartTruckerApp5.Models.Transactions
+
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+
+@using (Html.BeginForm("Create", "Transactions", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Transactions</h4>
+        <hr />
+        @Html.Label("", (string)ViewBag.message)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrucksID, "Truck Register Number", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RegNo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TrucksID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartDateTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.EstimatedDelivery, "Estimated come back", htmlAttributes: new { @class = "control-label col-md-2 " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EstimatedDelivery, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EstimatedDelivery, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Make a new job" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+<link href="~/Content/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" />
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+
+        $(document).ready(function () {
+            var minDate = new Date();
+
+            $("#StartDateTime").datepicker(
+                {
+                    showAnim: 'drop',
+                    numberOfMonth: 1,
+                    minDate: minDate,
+                    maxDate: '+2M',
+                    dateFormat: 'dd/mm/yy',
+                    onClose: function (selectedDate) {
+                        $('#StartDateTime').datepicker("option", "minDate", selectedDate);
+                    }
+                });
+
+
+            $("#EstimatedDelivery").datepicker(
+                {
+                    showAnim: 'drop',
+                    numberOfMonth: 1,
+                    minDate: minDate,
+                    maxDate: '+2M',
+                    dateFormat: 'dd/mm/yy',
+                    onClose: function (selectedDate) {
+                        $('#EstimatedDelivery').datepicker("option", "minDate", selectedDate);
+                    }
+                });
+
+
+        });
+    </script>
+
+
+}
+
+

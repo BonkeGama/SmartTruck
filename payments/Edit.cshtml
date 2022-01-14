@@ -1,0 +1,47 @@
+﻿@model SmartTruckerApp5.Models.payment
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Approving Proof of Payment</h2>
+
+
+@using (Html.BeginForm("Edit","payments",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>payment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.paymentKey)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.approval, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.approval, new SelectList(Enum.GetValues(typeof(SmartTruckerApp5.Models.payment.Ptype)))))
+                @Html.ValidationMessageFor(model => model.approval, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+     
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

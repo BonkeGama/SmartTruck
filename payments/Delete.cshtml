@@ -1,0 +1,55 @@
+﻿@model SmartTruckerApp5.Models.payment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cargodetails.CargoStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cargodetails.CargoStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.amountpayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amountpayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usersID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usersID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

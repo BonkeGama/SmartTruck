@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@Styles.Render("https://www.w3schools.com/w3css/4/w3.css")
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .mySlides {
+        display: none;
+    }
+
+    .fa {
+        padding: 20px;
+        font-size: 30px;
+        width: 50px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+    }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+    .fa-facebook {
+        background: #3B5998;
+        color: white;
+    }
+
+    .w3-left, .w3-right, .w3-badge {
+        cursor: pointer;
+    }
+
+    .w3-badge {
+        height: 13px;
+        width: 13px;
+        padding: 0;
+    }
+</style>
+<body background="~/Content/tRUCK/wp2150710-dark-road-wallpapers (1).jpg">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+
+    <div class="w3-content w3-display-container" style="max-width:1400px; max-height:400px">
+        <img class="mySlides  w3-animate-left" src="~/Content/tRUCK/2017101814204290476.jpg" style="width:100%" height="420px">
+        <img class="mySlides  w3-animate-left" src="~/Content/tRUCK/68834621-trucks-wallpapers.jpg" style="width:100%" height="420px">
+        <img class="mySlides  w3-animate-left" src="~/Content/tRUCK/69093752-trucks-wallpapers.png" style="width:100%" height="420px">
+        <img class="mySlides  w3-animate-left" src="~/Content/tRUCK/69626763-trucks-wallpapers.jpg" style="width:100%" height="420px">
+        <img class="mySlides  w3-animate-left" src="~/Content/tRUCK/bigstock-a-big-truck-on-the-motorway-12147686-1400x600.jpg" style="width:100%" height="420px">
+        <img class="mySlides  w3-animate-left" src="~/Content/tRUCK/volvo-truck-wallpapers-high-resolution-1.jpg" style="width:100%" height="420px">
+        <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+            <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+            <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+            <span class="w3-badge demo w3-border  w3-hover-red" onclick="currentDiv(1)"></span>
+            <span class="w3-badge demo w3-border w3-hover-red" onclick="currentDiv(2)"></span>
+            <span class="w3-badge demo w3-border w3-hover-red" onclick="currentDiv(3)"></span>
+            <span class="w3-badge demo w3-border  w3-hover-red" onclick="currentDiv(4)"></span>
+            <span class="w3-badge demo w3-border w3-hover-red" onclick="currentDiv(5)"></span>
+            <span class="w3-badge demo w3-border w3-hover-red" onclick="currentDiv(6)"></span>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 4500);
+            showDivs(slideIndex = myIndex);
+        }
+
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+            showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" w3-white", "");
+            }
+            x[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " w3-white";
+        }
+    </script>
+</body>

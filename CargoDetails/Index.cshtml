@@ -1,0 +1,79 @@
+﻿@model IEnumerable<SmartTruckerApp5.Models.CargoDetails>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CrgType.CargoName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Customers.CustomerName)
+        </th>*@
+       
+        <th>
+            @Html.DisplayNameFor(model => model.transaction.TransactionsKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstimatedTravellig)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoPayment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrgType.CargoName)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Customers.CustomerName)
+        </td>*@
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.transaction.TransactionsKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CargoStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedTravellig)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CargoPayment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CargoDetailsKey }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CargoDetailsKey }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CargoDetailsKey })
+        </td>
+    </tr>
+}
+
+</table>

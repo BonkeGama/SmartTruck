@@ -1,0 +1,91 @@
+﻿@model SmartTruckerApp5.Models.CargoDetails
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CargoDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CrgType.CargoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CrgType.CargoName)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model..CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customers.CustomerName)
+        </dd>*@
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.transaction.TransactionsKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transaction.TransactionsKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CargoStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CargoStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedTravellig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedTravellig)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CargoPayment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CargoPayment)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

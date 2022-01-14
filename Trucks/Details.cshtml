@@ -1,0 +1,42 @@
+﻿@model SmartTruckerApp5.Models.Trucks
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trucks</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TruckStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TruckStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TruckPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TruckPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TrucksKey }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

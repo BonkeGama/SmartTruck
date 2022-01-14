@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SmartTruckerApp5.Models.Transactions>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.trucks.RegistrationNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstimatedDelivery)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.StartDateTime)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.trucks.RegistrationNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedDelivery)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDateTime)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TransactionsKey }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TransactionsKey }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TransactionsKey })
+        </td>
+    </tr>
+}
+
+</table>

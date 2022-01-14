@@ -1,0 +1,91 @@
+﻿@model SmartTruckerApp5.Models.CargoDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CargoDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CrgType.CargoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CrgType.CargoName)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Customers.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customers.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Locations.LocationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Locations.LocationName)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.transaction.TransactionsKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transaction.TransactionsKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CargoStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CargoStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedTravellig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedTravellig)
+        </dd>
+
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickPoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CargoPayment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CargoPayment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CargoDetailsKey }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

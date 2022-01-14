@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SmartTruckerApp5.Models.CargoType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CargoName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CargoValue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CargoTypeKey }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CargoTypeKey }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CargoTypeKey })
+        </td>
+    </tr>
+}
+
+</table>

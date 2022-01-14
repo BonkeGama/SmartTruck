@@ -1,0 +1,117 @@
+﻿@model SmartTruckerApp5.Models.payment
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Uploading  Receipts </h2>
+
+
+@using (Html.BeginForm("Create", "payments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.cargoID, "cargo ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("cargoID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cargoID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Candidate_Image, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                <h4>Upload a Proof of payment document</h4>
+                <input type="file" name="files" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.amountpayed, "Amount Payed", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.amountpayed, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.amountpayed, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+@*<script>
+    $("#file").change(function () {
+    if(fileExtValidate(this)) { // file extension validation function
+    if(fileSizeValidate(this)) { // file size validation function
+    showImg(this);
+    }
+    }
+    });
+    // function for  validate file extension
+    var validExt = ".png, .gif, .jpeg, .jpg , .pdf";
+    function fileExtValidate(fdata) {
+    var filePath = fdata.value;
+    var getFileExt = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
+    var pos = validExt.indexOf(getFileExt);
+    if(pos < 0) {
+    alert("This file is not allowed, please upload valid file.");
+    return false;
+    } else {
+    return true;
+    }
+    }
+    //function for validate file size
+    var maxSize = '1024';
+    function fileSizeValidate(fdata) {
+    if (fdata.files && fdata.files[0]) {
+    var fsize = fdata.files[0].size/1024;
+    if(fsize > maxSize) {
+    alert('Maximum file size exceed, This file size is: ' + fsize + "KB");
+    return false;
+    } else {
+    return true;
+    }
+    }
+}
+
+
+    function getBase64(file) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            console.log(reader.result);
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+
+    var file = document.querySelector('#files > input[type="file"]').files[0];
+    getBase64(file);
+
+
+    </script>*@
+
+}
+

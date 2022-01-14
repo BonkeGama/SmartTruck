@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<style>
+    .my_text {
+        font-family: Arial, Helvetica, sans-serif font-size: 60px;
+    }
+
+   
+    background {
+        opacity: 0.5;
+        filter: alpha(opacity=50); /* For IE8 and earlier */
+    }
+
+
+</style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<style>
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Karma", sans-serif
+    }
+
+    .w3-bar-block .w3-bar-item {
+        
+        padding: 20px
+    }
+</style>
+@*<img src="~/Content/tRUCK/wp2150698-dark-road-wallpapers.jpg" />*@
+<body>
+        <div class="my_text">
+
+            <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+                <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button">Close Menu</a>
+
+                @if (User.IsInRole("Administrator"))
+                {
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Administration", "Index", "Admin")
+                    </a>
+                }
+
+                @if (User.IsInRole("Customer"))
+                {
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Request Service", "Create", "cargoDetails")
+                    </a>
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Upload Receipt", "Create", "payments")
+                    </a>
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("View My Cargos", "Index", "CargoDetails")
+                    </a>
+                }
+                @if (User.IsInRole("Driver"))
+                {
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Upload Receipt", "Create", "payments")
+                    </a>
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("View My Cargos", "Index", "DriverTransactions")
+                    </a>
+
+                }
+
+                @if (User.IsInRole("Clerk"))
+                {
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Cargodetails", "index", "cargodetails")
+                    </a>
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Cargotypes", "index", "cargotypes")
+                    </a>
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Customers", "index", "customers")
+                    </a>
+
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Managing Drivers", "create", "drivertransactions")
+                    </a>
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Add locations", "index", "locations")
+                    </a>
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Schedule ", "Index", "Transactions")
+                    </a>
+                    <a onclick="w3_close()" class="w3-bar-item w3-button">
+                        @Html.ActionLink("Trucks", "Index", "Trucks")
+                    </a>
+
+                }
+
+            </nav>
+            <div class="w3-top">
+
+                <div class="w3-bar w3-black w3-wide w3-padding w3-card">
+                    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+                    <a class="w3-bar-item w3-button"><font size="5"><b>ST</b> @Html.ActionLink("Smart Truckers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) </font></a>
+                    <!-- Float links to the right. Hide them on small screens -->
+
+                    <a class="w3-bar-item w3-button"><font size="5">@Html.ActionLink("Home", "Index", "Home") </font></a>
+                    <a class="w3-bar-item w3-button"><font size="5">@Html.ActionLink("About", "About", "Home") </font></a>
+                    <a class="w3-bar-item w3-button"><font size="5">@Html.ActionLink("Contact", "Contact", "Home") </font></a>
+
+                    <a class="w3-bar-item w3-button"><font size="3"> @Html.Partial("_LoginPartial")</font></a>
+
+                </div>
+            </div>
+
+
+
+            @*<div class="w3-top">
+                    <div class="w3-row w3-padding w3-black">
+                        <div class="w3-col s3">
+                            <a href="#" class="w3-button w3-block w3-black"> @Html.ActionLink("Smart Truckers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+                        </div>
+                        <div class="w3-col s3">
+                            <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
+                        </div>
+                        <div class="w3-col s3">
+                            <a href="#menu" class="w3-button w3-block w3-black">MENU</a>
+                        </div>
+                        <div class="w3-col s3">
+                            <a href="#where" class="w3-button w3-block w3-black">WHERE</a>
+                        </div>
+                    </div>
+                </div>*@
+
+            @*<div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                    }
+                    @if (User.IsInRole("Driver"))
+                    {
+                        <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                    }
+
+                    @if (User.IsInRole("Clerk"))
+                    {
+                        <li>@Html.ActionLink("cargodetails", "index", "cargodetails")</li>
+                        <li>@Html.ActionLink("cargotypes", "index", "cargotypes")</li>
+                        <li>@Html.ActionLink("customers", "index", "customers")</li>
+
+                        <div class="w3-dropdown-hover w3-hide-small">
+                            <button class="w3-padding-large w3-button " title="More" color="blue">MORE <i class="fa fa-caret-down"></i></button>
+                            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                <a href="#" class="w3-bar-item w3-button">Merchandise</a>
+                                <a href="#" class="w3-bar-item w3-button">Extras</a>
+                                <a href="#" class="w3-bar-item w3-button">Media</a>
+                            </div>
+                        </div>
+
+
+
+                        <li>@Html.ActionLink("drivers", "create", "drivertransactions")</li>
+                        <li>@Html.ActionLink("locations", "index", "locations")</li>
+                        <li>@Html.ActionLink("Transactions", "Index", "Transactions")</li>
+                        <li>@Html.ActionLink("Trucks", "Index", "Trucks")</li>
+                    }*@
+
+
+            @*<li>@Html.ActionLink("User Details", "ViewCreateTransa", "Transactions")</li>*@
+            
+        </div>
+        
+        <br/>
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+       
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+
+        <script>
+            // Script to open and close sidebar
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+            }
+        </script>
+    </>
+</html>

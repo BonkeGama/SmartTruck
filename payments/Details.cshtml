@@ -1,0 +1,52 @@
+﻿@model SmartTruckerApp5.Models.payment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cargoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cargoID)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amountpayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amountpayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usersID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usersID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.paymentKey }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
